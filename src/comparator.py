@@ -86,7 +86,7 @@ class PackagesComparer:
             dict: dict, keys - architectures and values - lists of packages.
         """
         grouped = {}
-        for pkg in packages:
+        for pkg in packages['packages']:
             arch = pkg['arch']
             if arch not in grouped:
                 grouped[arch] = []

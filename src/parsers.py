@@ -5,9 +5,9 @@ from API endpoint.
 import requests
 
 
-class PackageFetcher:
+class PackagesFetcher:
         """
-        Fetch binary package data from API.
+        This class fetch binary package data from API.
 
         Parameters:
             branch (str): The name of the branch to fetch binary packages for.
@@ -37,4 +37,8 @@ class PackageFetcher:
             if response.status_code == 200:
                   return response.json()
 
-            return None               
+            return None
+
+
+if __name__ == "__main__":
+      print(PackagesFetcher.get_binary_packages("p10"))
