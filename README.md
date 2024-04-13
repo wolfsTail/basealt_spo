@@ -27,6 +27,24 @@ Before running the script, you need to make it executable. This can be done usin
 chmod +x main.py
 ```
 
+To run the `main.py` script by its name from any directory, you need add the directory where it resides to your `PATH` environment variable.
+
+Determine exact location of script:
+
+```bash
+pwd
+```
+
+This command will return the full path to the current directory.
+
+Add the directory path to your PATH to make the changes only for the current terminal session:
+
+```bash
+export PATH=$PATH:/path/to/directory
+```
+
+Replace `/path/to/directory` with the path you found earlier.
+
 ### Usage
 
 Run the tool by specifying two branches to compare. You can also specify an optional output file name (without extension).
@@ -51,3 +69,52 @@ main.py p10 sisyphus -o comparison_results
 ### Output
 
 The results are saved in a JSON file in the current directory.
+
+```json
+{
+  "architecture": {
+    "branch_name_only_packages": [
+      {
+        "name": "package_name",
+        "epoch": "epoch_number",
+        "version": "version_number",
+        "release": "release_number",
+        "arch": "architecture_type",
+        "disttag": "distribution_tag",
+        "buildtime": "timestamp",
+        "source": "source_name"
+      },
+      ...,
+    ],
+    "other_branch_name_only_packages": [
+      {
+        "name": "package_name",
+        "epoch": "epoch_number",
+        "version": "version_number",
+        "release": "release_number",
+        "arch": "architecture_type",
+        "disttag": "distribution_tag",
+        "buildtime": "timestamp",
+        "source": "source_name"
+      },
+      ...,
+    ],
+    "version_diffs": [
+      {
+        "name": "package_name",
+        "epoch": "epoch_number",
+        "version": "version_number",
+        "release": "release_number",
+        "arch": "architecture_type",
+        "disttag": "distribution_tag",
+        "buildtime": "timestamp",
+        "source": "source_name"
+      },
+      ...,
+    ]
+  },
+  "other_architecture": {
+    ...
+  }
+}
+```
